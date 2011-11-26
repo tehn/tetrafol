@@ -1,0 +1,16 @@
+tetrafol
+
+11/26/11
+
+http://folchen.com
+http://monome.org
+http://machineproject.com
+
+license: gpl3, see http://www.gnu.org/licenses/gpl.html
+
+based on the arduino: http://arduino.cc
+based on the waveshield by adafruit industries: http://adafruit.com
+uses wavehc: http://code.google.com/p/wavehc/
+waveshield: http://www.ladyada.net/make/waveshield/
+
+the tetrafol circuit is basically an arduino and waveshield combined, with the unneeded bits removed and an accelerometer added. it's surface-mount to be small.

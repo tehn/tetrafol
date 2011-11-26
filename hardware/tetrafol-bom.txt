@@ -1,0 +1,37 @@
+Partlist
+                                    
+C1       10u            PANASONIC_B 
+C2       0.1uF          C1206       
+C3       0.1uF          C1206       
+C4       100uF/6V       PANASONIC_C 
+C5       0.1uF          C1206       
+C6       0.1uF          C1206       
+C7       0.1uF          C1206       
+C8       0.01uF         C1206       
+C9       100uF/6V       PANASONIC_B 
+C10      20pf           C1206       
+C11      20p            C1206       
+C12      0.1u           C1206       
+C13      100u           PANASONIC_C 
+C14      100u           PANASONIC_C 
+C15      0.1u           C1206       
+C16      0.1u           C1206       
+C17      0.1u           C1206       
+C18      0.1u           C1206       
+C19      0.1u           C1206       
+D1                      SMA-DIODE   
+IC1      ATMEGA328P     TQFP32-08   
+IC2      MCP4921        SO08        
+IC3      TL072D         SO08        
+IC4      74125          SO14        
+Q1       20mhz          HC49UP      
+R1       4.7k           R1206       
+R6       10K            R1206       
+R7       1.5K           R1206       
+R8       100K           R1206       
+TM1      311-1204F-10K  THUMBPOT        
+U4       2041021-3      SDMMC06132            
+U1       ADXL330SMD     LFCSP-16    
+U2       7805DT         TO252       
+U3       MCP1700        SOT23       
+X1       STEREOJACK     STX3100     
