@@ -112,12 +112,12 @@ SIGNAL(TIMER2_OVF_vect) {
 
 
 
-#define FLATZ 27
-#define MOVEZ 4
+#define FLATZ 28
+#define MOVEZ 6
 
 int16_t tiltx, tilty, tiltz;
 int16_t tiltxp, tiltyp, tiltzp;
-uint8_t current_file, file_just_changed;
+uint8_t current_file, file_just_changed, change_counter;
 uint16_t wait_count = 0;
 uint32_t new_position, stutter_time, stutter_count;
 uint16_t average;
@@ -126,7 +126,7 @@ uint16_t bucket_position;
 uint32_t newsamplerate;
 
 char ff[][7] = {
-  "01.WAV","02.WAV","03.WAV","04.WAV","05.WAV","06.WAV","07.WAV","08.WAV","09.WAV","10.WAV","11.WAV","12.WAV","13.WAV"};
+  "01.WAV","02.WAV","03.WAV","04.WAV","05.WAV","06.WAV","07.WAV","08.WAV","09.WAV","10.WAV","11.WAV","12.WAV","13.WAV","14.WAV","15.WAV"};
 
 byte i;
 static byte playing = -1;
@@ -151,7 +151,7 @@ void loop() {
   delay(1);
 
   wait_count++;
-  if(wait_count > 10) {
+  if(wait_count > 20) {
 
     // ========================================== switch sounds ==============
     tiltx = analogRead(0) >> 4;
@@ -161,10 +161,14 @@ void loop() {
 
       if(tiltx > 46 && file_just_changed == 0) {
         current_file++;
-        current_file%=13;
+        current_file %= 15;
         file_just_changed = 1;
+        change_counter = 0;
       }
 
+      change_counter++;
+
+      if(change_counter > 50) file_just_changed = 1;
       if(tiltx < 26 && file_just_changed == 1) file_just_changed = 0;
     }
     
@@ -177,7 +181,7 @@ void loop() {
       average = (bucket[0] + bucket[1] + bucket[2] + bucket[3]) >> 2;
       bucket_position++;
       bucket_position %= 4;
-      newsamplerate = 12000 + (average - 15)*250;
+      newsamplerate = 10750 + (average - 15)*350;
 
       wave.setSampleRate(newsamplerate);
     }
