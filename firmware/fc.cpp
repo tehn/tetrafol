@@ -1,10 +1,11 @@
+
 #include <FatReader.h>
 #include <SdReader.h>
 #include <avr/pgmspace.h>
 #include "WaveUtil.h"
 #include "WaveHC.h"
 
-#include "WProgram.h"
+#include "Arduino.h"
 int freeRam(void);
 void sdErrorCheck(void);
 void setup();
@@ -151,7 +152,7 @@ void loop() {
   delay(1);
 
   wait_count++;
-  if(wait_count > 20) {
+  if(wait_count > 10) {
 
     // ========================================== switch sounds ==============
     tiltx = analogRead(0) >> 4;
@@ -163,12 +164,12 @@ void loop() {
         current_file++;
         current_file %= 15;
         file_just_changed = 1;
-        change_counter = 0;
+        //change_counter = 0;
       }
 
-      change_counter++;
+      //change_counter++;
 
-      if(change_counter > 50) file_just_changed = 1;
+      //if(change_counter > 80) file_just_changed = 1;
       if(tiltx < 26 && file_just_changed == 1) file_just_changed = 0;
     }
     
@@ -181,7 +182,7 @@ void loop() {
       average = (bucket[0] + bucket[1] + bucket[2] + bucket[3]) >> 2;
       bucket_position++;
       bucket_position %= 4;
-      newsamplerate = 10750 + (average - 15)*350;
+      newsamplerate = 8500 + (average - 15)*500;
 
       wave.setSampleRate(newsamplerate);
     }
